@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-be">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento Épico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img id="img1" src="ccxp.svg">
+    </header>
+    <div class="container">
+        <div id="text">
+            <h1><b>REVIVA O ÉPICO</b></h1><br>
+            <h2><b>DE 01 A 04 DE DEZEMBRO</b></h2><br>
+            <p>Você consegue sentir? É aquela sensação de finalmente poder falar em voz alta: "estamos em casa". Sim, em dezembro de 2022, teremos a volta da CCXP física. Mas não será qualquer CCXP, vai ser a maior de todos os tempos. Prepare-se para visitar seus universos favoritos, explorar o Artists' Valley, se emocionar nos auditórios e encontrar aventuras épicas a cada passo pelos nossos corredores.</p>
+        </div>
+        <div id="countdown">
+            <ul>
+                <li id="dia">D:0</li>
+                <li id="hora">H:0</li>
+                <li id="min">M:0</li>
+                <li id="seg">S:0</li>
+            </ul>
+            <p>PARA A MAIOR CCXP DE TODOS OS TEMPOS</p>
+            <video width=" 830px" height="540px" controls>
+                <source src="Arlequina.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div class="container" id="rodape">
+        <div>
+            <h3>AINDA DÁ TEMPO DE GARANTIR O SEU, MAS CORRE!</h3>
+            <ul>
+                <li><img src="card1.svg"></li>
+                <li><img src="card2.svg"></li>
+                <li><img src="card3.svg"></li>
+                <li><img src="card4.svg"></li>
+            </ul>
+        </div>
+        <div>
+            <input id="buy" type="button" value="GARANTA O SEU!" onmouseenter="entrar()" onmouseleave="sair()">
+        </div>
+    </div>    
+    <script>
+        const dia = document.getElementById('dia')
+        const hora = document.getElementById('hora')
+        const min = document.getElementById('min')
+        const seg = document.getElementById('seg')
+        const release = '1 dec 2023'
+
+        function countDown(){
+            const dataL = new Date(release)
+            const hoje = new Date()
+
+            const segTotal = (dataL - hoje)/1000;
+            const finalD = Math.floor(segTotal / 60 / 60 / 24);
+            const finalHrs = Math.floor(segTotal / 60 / 60)% 24;
+            const finalMin = Math.floor(segTotal /60)% 60;
+            const finalSeg = Math.floor(segTotal)% 60;
+
+            dia.innerHTML = (`${finalD} D`)
+            hora.innerHTML = formatoTempo(`${finalHrs}H`)
+            min.innerHTML = formatoTempo(`${finalMin} M`)
+            seg.innerHTML = formatoTempo(`${finalSeg}S`)
+        }
+        countDown();
+        setInterval(countDown, 1000)
+
+        function formatoTempo( tempo ){
+            return tempo < 10? `0${tempo}` : tempo
+        }
+        function entrar(){
+            buy.style.background = '#FFD900'
+        }
+        function sair(){
+            buy.style.background = '#514988'
+        }
+    </script>
+</body>
+</html>
